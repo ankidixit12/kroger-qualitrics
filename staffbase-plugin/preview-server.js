@@ -18,7 +18,7 @@ const mimeTypes = {
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${port}`);
   let pathname = url.pathname === '/' ? '/preview/index.html' : url.pathname;
-  const filePath = path.join(root, pathname);
+  const filePath = path.join(root, pathname.replace(/^\//, ''));
 
   try {
     const data = await fs.readFile(filePath);
