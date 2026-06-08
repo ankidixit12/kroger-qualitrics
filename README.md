@@ -6,7 +6,7 @@ This repository contains a simple Staffbase Studio plugin that loads a Qualtrics
 
 - `staffbase-plugin/` — the standalone Staffbase plugin package
 - `staffbase-plugin/src/index.js` — plugin bootstrap logic
-- `staffbase-plugin/src/QualtricsLoader.js` — loads the Qualtrics Zone URL and sets `externalReference`
+- `staffbase-plugin/src/QualtricsLoader.js` — loads the Qualtrics intercept Zone URL, creates a page embed root, and sets `externalReference`
 - `staffbase-plugin/src/RouteListener.js` — refreshes Qualtrics for SPA navigation
 - `staffbase-plugin/plugin.json` — Staffbase plugin descriptor
 
@@ -42,6 +42,7 @@ If you want to customize the Zone URL, edit `staffbase-plugin/src/QualtricsLoade
 
 - `staffbase-plugin/src/index.js` initializes the plugin with `context` from Staffbase
 - It reads the logged-in user and sets `externalReference`
+- It creates a lightweight intercept root on the page where Qualtrics can attach
 - It loads the Qualtrics Zone script once
 - It refreshes Qualtrics on SPA route changes if Staffbase navigation is available
 

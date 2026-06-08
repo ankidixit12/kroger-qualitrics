@@ -14,10 +14,14 @@
   </head>
   <body>
     <div class="card">
-      <h1>Staffbase Qualtrics Plugin Preview</h1>
-      <p>This page loads the built plugin bundle and initializes it with a fake Staffbase context.</p>
+      <h1>Staffbase Qualtrics Plugin Preview</h1><p>This page loads the built plugin bundle and initializes it with a fake Staffbase context.</p>
       <p>Qualtrics Zone URL will be loaded directly from the plugin.</p>
-      <button id="refresh">Refresh Qualtrics</button>
+      <div>
+        <button id="refresh">Refresh Qualtrics</button>
+        <button id="testPopup">Test Pop-up</button>
+        <button id="testFeedback">Test Feedback Button</button>
+        <button id="testEmbedded">Test Embedded (demo)</button>
+      </div>
       <h2>Logs</h2>
       <pre id="logs">Starting plugin preview...
 </pre>
@@ -50,6 +54,30 @@
         log('Plugin load failed: ' + error.message);
         console.error(error);
       }
+      document.getElementById('testPopup').addEventListener('click', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('QualtricsTest_PopUp', '1');
+        window.location.href = url.toString();
+      });
+      document.getElementById('testFeedback').addEventListener('click', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('QualtricsTest_FeedbackButton', '1');
+        window.location.href = url.toString();
+      });
+      document.getElementById('testEmbedded').addEventListener('click', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('QualtricsTest_Embedded', '1');
+        // demo selector for embedded: preview container
+        url.searchParams.set('qualtricsSelector', '#embedded-target');
+        window.location.href = url.toString();
+      });
+
+      // add a demo embedded target for preview
+      const demoTarget = document.createElement('div');
+      demoTarget.id = 'embedded-target';
+      demoTarget.style.marginTop = '18px';
+      demoTarget.innerHTML = '<strong>Embedded intercept demo target</strong> <div id="embedded-target-inner"></div>';
+      document.querySelector('.card').appendChild(demoTarget);
     </script>
   </body>
 </html>
