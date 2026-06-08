@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "mkdir -p dist && cp src/index.js dist/index.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "dev": "nodemon --watch src --ext js --exec \"npm run build\""
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
