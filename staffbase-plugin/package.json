@@ -1,0 +1,10 @@
+{
+  "name": "kroger-qualitrics-staffbase-plugin",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "mkdir -p dist && cp src/index.js dist/index.js",
+    "clean": "rm -rf dist"
+  }
+}
