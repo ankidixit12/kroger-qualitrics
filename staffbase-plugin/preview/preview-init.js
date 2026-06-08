@@ -5,7 +5,7 @@ const log = (message) => {
 
 const initPreview = async () => {
   try {
-    const { default: initPlugin } = await import('/dist/index.js');
+    const { default: initPlugin } = await import('../dist/index.js');
     const context = {
       user: { id: 'dev-user-001', externalId: 'dev-user-001' },
       router: {

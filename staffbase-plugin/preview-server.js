@@ -17,8 +17,16 @@ const mimeTypes = {
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${port}`);
-  let pathname = url.pathname === '/' ? '/preview/index.html' : url.pathname;
+  let pathname = url.pathname;
+
+  if (pathname === '/' || pathname === '/preview' || pathname === '/preview/') {
+    pathname = '/preview/index.html';
+  } else if (!pathname.startsWith('/preview/') && pathname.includes('/preview/')) {
+    pathname = pathname.slice(pathname.indexOf('/preview/'));
+  }
+
   const filePath = path.join(root, pathname.replace(/^\//, ''));
+  console.log('[preview]', req.url, '->', pathname, filePath);
 
   try {
     const data = await fs.readFile(filePath);
