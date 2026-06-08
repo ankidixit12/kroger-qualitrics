@@ -1,9 +1,0 @@
-{
-  "id": "kroger-qualitrics-plugin",
-  "name": "Kroger Qualtrics Plugin",
-  "description": "Staffbase Studio plugin embedding a Qualtrics survey.",
-  "version": "0.1.0",
-  "entryPoint": "https://YOUR_PLUGIN_HOST_URL/index.html",
-  "scopes": ["experience"],
-  "platforms": ["web"]
-}

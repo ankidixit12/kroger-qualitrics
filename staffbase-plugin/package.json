@@ -6,7 +6,8 @@
   "scripts": {
     "build": "mkdir -p dist && cp src/index.js dist/index.js",
     "clean": "rm -rf dist",
-    "dev": "nodemon --watch src --ext js --exec \"npm run build\""
+    "dev": "nodemon --watch src --ext js --exec \"npm run build\"",
+    "preview": "node preview-server.js"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
