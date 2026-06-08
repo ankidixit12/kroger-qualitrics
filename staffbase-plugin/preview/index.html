@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
     <title>Staffbase Qualtrics Plugin Preview</title>
     <style>
       body { font-family: system-ui, sans-serif; margin: 24px; background: #f4f6fb; color: #1f2937; }
@@ -26,58 +27,8 @@
       <pre id="logs">Starting plugin preview...
 </pre>
       <p>Open the browser console for more details.</p>
-      <p>Built bundle: <code>../dist/index.js</code></p>
+      <p>Built bundle: <code>/dist/index.js</code></p>
     </div>
-    <script type="module">
-      const logArea = document.getElementById('logs');
-      const log = (message) => {
-        logArea.textContent += message + '\n';
-      };
-
-      try {
-        const { default: initPlugin } = await import('../dist/index.js');
-        const context = {
-          user: { id: 'dev-user-001', externalId: 'dev-user-001' },
-          router: {
-            listen(callback) {
-              document.getElementById('refresh').addEventListener('click', () => {
-                log('SPA route refresh triggered');
-                callback();
-              });
-            }
-          }
-        };
-
-        initPlugin(context);
-        log('Plugin initialized with fake Staffbase context.');
-      } catch (error) {
-        log('Plugin load failed: ' + error.message);
-        console.error(error);
-      }
-      document.getElementById('testPopup').addEventListener('click', () => {
-        const url = new URL(window.location.href);
-        url.searchParams.set('QualtricsTest_PopUp', '1');
-        window.location.href = url.toString();
-      });
-      document.getElementById('testFeedback').addEventListener('click', () => {
-        const url = new URL(window.location.href);
-        url.searchParams.set('QualtricsTest_FeedbackButton', '1');
-        window.location.href = url.toString();
-      });
-      document.getElementById('testEmbedded').addEventListener('click', () => {
-        const url = new URL(window.location.href);
-        url.searchParams.set('QualtricsTest_Embedded', '1');
-        // demo selector for embedded: preview container
-        url.searchParams.set('qualtricsSelector', '#embedded-target');
-        window.location.href = url.toString();
-      });
-
-      // add a demo embedded target for preview
-      const demoTarget = document.createElement('div');
-      demoTarget.id = 'embedded-target';
-      demoTarget.style.marginTop = '18px';
-      demoTarget.innerHTML = '<strong>Embedded intercept demo target</strong> <div id="embedded-target-inner"></div>';
-      document.querySelector('.card').appendChild(demoTarget);
-    </script>
+    <script type="module" src="/preview/preview-init.js"></script>
   </body>
 </html>
