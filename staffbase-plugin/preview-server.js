@@ -21,6 +21,10 @@ const server = http.createServer(async (req, res) => {
 
   if (pathname === '/' || pathname === '/preview' || pathname === '/preview/') {
     pathname = '/preview/index.html';
+  } else if (pathname.endsWith('/preview') || pathname.endsWith('/preview/')) {
+    pathname = '/preview/index.html';
+  } else if (pathname.endsWith('/preview/index.html')) {
+    pathname = '/preview/index.html';
   } else if (!pathname.startsWith('/preview/') && pathname.includes('/preview/')) {
     pathname = pathname.slice(pathname.indexOf('/preview/'));
   }
