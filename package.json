@@ -3,6 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "cd staffbase-plugin && npm run build"
+    "build:plugin": "cd staffbase-plugin && npm run build",
+    "build:widget": "cd staffbase-widget && npm run build",
+    "build": "npm run build:plugin && npm run build:widget"
   }
 }

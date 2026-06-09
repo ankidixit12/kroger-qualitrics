@@ -28,6 +28,28 @@ This plugin does not need a server-side backend. It loads Qualtrics entirely fro
 
 3. Register the plugin in Staffbase Studio using `staffbase-plugin/plugin.json` and the built bundle.
 
+## Staffbase widget setup
+
+1. Build the widget:
+   ```bash
+   cd /workspaces/kroger-qualitrics/staffbase-widget
+   npm install
+   npm run build
+   ```
+
+2. The widget output is:
+   - `staffbase-widget/dist/index.js`
+
+3. Start the local preview server and open the widget preview page:
+   ```bash
+   npm run preview
+   ```
+
+   Open:
+   - `http://localhost:3001/preview/index.html`
+
+4. Register the widget in Staffbase Studio using `staffbase-widget/widget.json` and the built bundle.
+
 ## Qualtrics URL
 
 The plugin uses this Qualtrics Zone URL:

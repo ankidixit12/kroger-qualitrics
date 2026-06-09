@@ -1,0 +1,9 @@
+{
+  "id": "qualtrics-widget",
+  "name": "Qualtrics Integration Widget",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "description": "Staffbase widget that loads a Qualtrics intercept using externalReference and route refresh.",
+  "scopes": ["experience"],
+  "platforms": ["web"]
+}
